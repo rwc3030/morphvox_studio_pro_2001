@@ -11,6 +11,11 @@ public:
     }
 
     void processAudio(float* inputBuffer, float* outputBuffer, int numSamples) {
+        // Check for null input buffer or zero samples
+        if (inputBuffer == nullptr || outputBuffer == nullptr || numSamples <= 0) {
+            return; // Early exit to avoid processing
+        }
+
         // Process audio with new transformation logic
         for (int i = 0; i < numSamples; ++i) {
             outputBuffer[i] = applyTransformation(inputBuffer[i]);
