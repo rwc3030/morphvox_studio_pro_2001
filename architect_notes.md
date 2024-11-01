@@ -34,6 +34,22 @@
 
 4. **Voice Character Validation**: The `applyVoiceCharacter` function needs validation for the character parameter to ensure that only valid character selections are processed.
 
+## Project Status Summary
+
+### Completed Tasks
+- All identified issues have been resolved, including handling NaN values in the input buffer and validating the formantShift parameter.
+- Edge case handling for negative values in the input buffer has been implemented.
+- Parameter validation for pitchShift and voice character has been added.
+
+### Project Gaps
+- Comprehensive validation for the input buffer is still needed, particularly for values outside the expected audio sample range.
+- Further improvements in error handling and code duplication are required.
+
+### Unresolved Issues
+- The code does not handle cases where the input buffer contains values outside the expected range for audio samples.
+- No upper limit check for pitchShift in applyTransformation.
+- No validation for character parameter in applyVoiceCharacter.
+
 ## File and Directory Structure Adjustments
 
 - Verified that the directory structure aligns with the requirements specified in 'README.md'.
