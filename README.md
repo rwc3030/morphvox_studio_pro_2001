@@ -4,6 +4,10 @@
 ### Overview
 This template provides standardized development guidelines for VST plugin projects within our company. All new plugin projects should follow these structures and guidelines to maintain consistency and quality across our product line.
 
+### New Feature: Voice Transformation
+- Added UI controls for pitch and formant adjustments.
+- Implemented API endpoint for processing voice transformations.
+
 ### Standard Development Stack
 #### Required Technologies
 - JUCE Framework 7.0+
@@ -27,11 +31,13 @@ This template provides standardized development guidelines for VST plugin projec
 │   ├── /Core                    # Core DSP and processing
 │   │   ├── ProcessorBase.cpp    # Base DSP processing
 │   │   ├── ParameterManager.cpp # Parameter handling
-│   │   └── AudioEngine.cpp      # Main processing logic
+│   │   ├── VoiceTransformer.cpp  # Voice transformation logic
+│   │   └── VoiceTransformationAPI.cpp # API for voice transformation
 │   ├── /GUI                     # Standard interface components
 │   │   ├── MainComponent.cpp    # Main plugin window
 │   │   ├── CompanyLookAndFeel.cpp # Company standard UI
-│   │   └── CustomControls.cpp   # Reusable controls
+│   │   ├── CustomControls.cpp   # Reusable controls
+│   │   └── VoiceTransformationComponent.cpp # New voice transformation UI
 │   └── /Presets                 # Preset management
 ├── /Resources
 │   ├── /Images                  # UI assets
