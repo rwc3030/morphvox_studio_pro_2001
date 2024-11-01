@@ -1,5 +1,6 @@
 #include "VoiceTransformationAPI.h"
 #include "VoiceTransformer.h"
+#include "ParameterManager.h"
 
 extern "C" void processVoiceTransformation(float* inputBuffer, float* outputBuffer, int numSamples) {
     VoiceTransformer transformer;

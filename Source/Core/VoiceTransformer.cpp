@@ -1,5 +1,6 @@
 #include "VoiceTransformer.h"
 #include "ParameterManager.h"
+#include "AudioProcessingUtils.h"
 #include <cmath>
 
 VoiceTransformer::VoiceTransformer() {
@@ -8,21 +9,8 @@ VoiceTransformer::VoiceTransformer() {
 }
 
 void VoiceTransformer::processAudio(float* inputBuffer, float* outputBuffer, int numSamples) {
-    // Check for null input buffer or zero samples
-    if (inputBuffer == nullptr || outputBuffer == nullptr || numSamples <= 0) {
-        return; // Early exit to avoid processing
-    }
-
-    // Process audio with new transformation logic
-    for (int i = 0; i < numSamples; ++i) {
-        if (inputBuffer[i] < 0.0f) {
-            outputBuffer[i] = 0.0f; // Handle negative values
-        } else if (std::isnan(inputBuffer[i])) {
-            outputBuffer[i] = 0.0f; // Handle NaN values
-        } else {
-            outputBuffer[i] = applyTransformation(inputBuffer[i]);
-        }
-    }
+    // Use the utility function to process audio
+    processAudioBuffer(inputBuffer, outputBuffer, numSamples);
 }
 
 void VoiceTransformer::initParameters() {
