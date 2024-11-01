@@ -24,3 +24,10 @@
 3. **Unresolved Bug**: No upper limit check for pitchShift in applyTransformation.
 4. **Unresolved Bug**: No validation for character parameter in applyVoiceCharacter.
 
+## File and Directory Structure Adjustments
+
+- Verified that the directory structure aligns with the requirements specified in 'README.md'.
+- Ensured that all source files are located in the appropriate directories under 'Source/Core' and 'Source/GUI'.
+- Confirmed that test files are organized under 'Tests/DSP', 'Tests/GUI', and 'Tests/Integration'.
+- All resources are correctly placed in 'Resources/Images' and 'Resources/Presets'.
+
