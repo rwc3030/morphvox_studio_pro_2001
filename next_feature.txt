@@ -10,4 +10,8 @@
    - Ensure functional integrity of the code.
    - Document any identified issues in this section.
 
-*Note: All issues have been resolved and the feature is now marked as complete.*
+## Identified Issues:
+- The `VoiceTransformer` class in `FeatureImplementation.cpp` does not handle cases where the input buffer is null or the number of samples is zero, which could lead to crashes or undefined behavior.
+- The `applyTransformation` method should include checks for valid parameter values retrieved from `ParameterManager` to avoid unexpected results during audio processing.
+
+*Note: All issues have been recorded, and the feature is not marked as complete.*
