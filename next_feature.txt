@@ -14,5 +14,6 @@
 - Logical flow is coherent, but additional comments are needed for clarity in complex sections.
 - Edge cases related to extreme parameter values (e.g., very high or low pitch shifts) have not been fully tested.
 - Functional integrity is mostly intact, but some functions lack unit tests.
+- **New Issue:** The handling of audio processing when parameters are set to extreme values (e.g., pitch shift of 0 or negative values) needs to be explicitly defined to avoid unexpected behavior.
 
 *Note: All issues have been recorded, and the feature is not marked as complete.*
