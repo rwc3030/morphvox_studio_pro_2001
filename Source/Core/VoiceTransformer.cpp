@@ -1,5 +1,6 @@
 #include "VoiceTransformer.h"
 #include "ParameterManager.h"
+#include <cmath> // For std::isnan
 
 VoiceTransformer::VoiceTransformer() {
     // Initialize parameters
@@ -14,7 +15,11 @@ void VoiceTransformer::processAudio(float* inputBuffer, float* outputBuffer, int
 
     // Process audio with new transformation logic
     for (int i = 0; i < numSamples; ++i) {
-        outputBuffer[i] = applyTransformation(inputBuffer[i]);
+        if (std::isnan(inputBuffer[i])) {
+            outputBuffer[i] = 0.0f; // Handle NaN values
+        } else {
+            outputBuffer[i] = applyTransformation(inputBuffer[i]);
+        }
     }
 }
 
@@ -31,13 +36,12 @@ float VoiceTransformer::applyTransformation(float sample) {
     float formantShift = ParameterManager::getParameter("FormantShift");
 
     // Validate parameter values
-    if (pitchShift < 0.0f || formantShift < 0.0f) {
+    if (pitchShift < 0.0f || formantShift < 0.0f || formantShift > 2.0f) { // Assuming 2.0f is the threshold
         return sample; // Return original sample if parameters are invalid
     }
 
-    // Apply transformation logic here...
-
-    return sample; // Placeholder for transformed sample
+    // Transformation logic here...
+    return sample; // Placeholder for actual transformation logic
 }
 
 void VoiceTransformer::applyVoiceCharacter(int character) {
@@ -53,6 +57,7 @@ void VoiceTransformer::applyVoiceCharacter(int character) {
             // Character B processing
             break;
         default:
+            // Handle unknown character
             break;
     }
 }

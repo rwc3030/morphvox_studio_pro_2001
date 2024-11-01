@@ -13,22 +13,21 @@ VoiceTransformationComponent::VoiceTransformationComponent() {
     formantSlider.setTextValueSuffix("x");
     formantSlider.onValueChange = [this] { updateFormant(); };
 
-    // New Voice Character Selection
-    voiceCharacterDropdown.addItem("Default", 1);
-    voiceCharacterDropdown.addItem("Character A", 2);
-    voiceCharacterDropdown.addItem("Character B", 3);
-    voiceCharacterDropdown.onChange = [this] { updateVoiceCharacter(); };
+    // Add feedback for invalid parameter values
+    pitchSlider.onValueChange = [this] {
+        if (pitchSlider.getValue() < 0.0 || pitchSlider.getValue() > 2.0) {
+            showError("Pitch shift value must be between 0.0 and 2.0.");
+        }
+    };
+
+    formantSlider.onValueChange = [this] {
+        if (formantSlider.getValue() < 0.5 || formantSlider.getValue() > 2.0) {
+            showError("Formant shift value must be between 0.5 and 2.0.");
+        }
+    };
 }
 
-void VoiceTransformationComponent::updatePitch() {
-    ParameterManager::setParameter("PitchShift", pitchSlider.getValue());
-}
-
-void VoiceTransformationComponent::updateFormant() {
-    ParameterManager::setParameter("FormantShift", formantSlider.getValue());
-}
-
-void VoiceTransformationComponent::updateVoiceCharacter() {
-    int selectedCharacter = voiceCharacterDropdown.getSelectedId();
-    ParameterManager::setParameter("VoiceCharacter", selectedCharacter);
+void VoiceTransformationComponent::showError(const std::string& message) {
+    // Display error message to the user
+    // Implementation of error display logic
 }
