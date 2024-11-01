@@ -14,5 +14,7 @@ extern "C" void processVoiceTransformation(float* inputBuffer, float* outputBuff
     
     // Handle voice character processing
     int voiceCharacter = ParameterManager::getParameter("VoiceCharacter");
-    transformer.applyVoiceCharacter(voiceCharacter);
+    if (voiceCharacter >= 1 && voiceCharacter <= 3) {
+        transformer.applyVoiceCharacter(voiceCharacter);
+    }
 }

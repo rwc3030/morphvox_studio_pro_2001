@@ -14,8 +14,14 @@ void VoiceTransformer::processAudio(float* inputBuffer, float* outputBuffer, int
         return; // Early exit to avoid processing
     }
 
-    // Use the utility function to process audio
-    processAudioBuffer(inputBuffer, outputBuffer, numSamples);
+    // Process audio buffer
+    for (int i = 0; i < numSamples; ++i) {
+        if (inputBuffer[i] < 0.0f) {
+            outputBuffer[i] = 0.0f; // Handle negative values
+        } else {
+            outputBuffer[i] = inputBuffer[i]; // Placeholder for actual transformation logic
+        }
+    }
 }
 
 void VoiceTransformer::initParameters() {
