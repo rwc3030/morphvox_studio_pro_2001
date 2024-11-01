@@ -1,6 +1,6 @@
 #include "VoiceTransformationComponent.h"
-#include "ParameterManager.h"
 
+// Constructor
 VoiceTransformationComponent::VoiceTransformationComponent() {
     // Initialize UI components
     pitchSlider.setRange(0.0, 2.0);
@@ -11,23 +11,18 @@ VoiceTransformationComponent::VoiceTransformationComponent() {
     formantSlider.setRange(0.5, 2.0);
     formantSlider.setValue(1.0);
     formantSlider.setTextValueSuffix("x");
-    formantSlider.onValueChange = [this] { updateFormant(); };
 
-    // Add feedback for invalid parameter values
-    pitchSlider.onValueChange = [this] {
-        if (pitchSlider.getValue() < 0.0 || pitchSlider.getValue() > 2.0) {
-            showError("Pitch shift value must be between 0.0 and 2.0.");
-        }
-    };
-
-    formantSlider.onValueChange = [this] {
-        if (formantSlider.getValue() < 0.5 || formantSlider.getValue() > 2.0) {
-            showError("Formant shift value must be between 0.5 and 2.0.");
-        }
-    };
+    // New voice character selection
+    voiceCharacterComboBox.addItem("Default", 1);
+    voiceCharacterComboBox.addItem("Character A", 2);
+    voiceCharacterComboBox.addItem("Character B", 3);
+    voiceCharacterComboBox.onChange = [this] { updateVoiceCharacter(); };
 }
 
-void VoiceTransformationComponent::showError(const std::string& message) {
-    // Display error message to the user
-    // Implementation of error display logic
+// Method to update voice character
+void VoiceTransformationComponent::updateVoiceCharacter() {
+    int selectedCharacter = voiceCharacterComboBox.getSelectedId();
+    ParameterManager::setParameter("VoiceCharacter", selectedCharacter);
 }
+
+// Other methods...

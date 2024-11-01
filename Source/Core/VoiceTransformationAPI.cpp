@@ -7,6 +7,5 @@ extern "C" void processVoiceTransformation(float* inputBuffer, float* outputBuff
     
     // Handle voice character processing
     int voiceCharacter = ParameterManager::getParameter("VoiceCharacter");
-    // Logic to apply voice character transformation based on selected character
     transformer.applyVoiceCharacter(voiceCharacter);
 }
