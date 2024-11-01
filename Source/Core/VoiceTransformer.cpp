@@ -21,7 +21,7 @@ void VoiceTransformer::processAudio(float* inputBuffer, float* outputBuffer, int
         } else if (inputBuffer[i] > 1.0f) {
             outputBuffer[i] = 1.0f; // Cap values above 1.0
         } else {
-            outputBuffer[i] = inputBuffer[i]; // Placeholder for actual transformation logic
+            outputBuffer[i] = applyTransformation(inputBuffer[i]); // Apply transformation logic
         }
     }
 }
