@@ -18,6 +18,8 @@ void VoiceTransformer::processAudio(float* inputBuffer, float* outputBuffer, int
     for (int i = 0; i < numSamples; ++i) {
         if (inputBuffer[i] < 0.0f) {
             outputBuffer[i] = 0.0f; // Handle negative values
+        } else if (inputBuffer[i] > 1.0f) {
+            outputBuffer[i] = 1.0f; // Cap values above 1.0
         } else {
             outputBuffer[i] = inputBuffer[i]; // Placeholder for actual transformation logic
         }
