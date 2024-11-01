@@ -12,13 +12,6 @@ VoiceTransformationComponent::VoiceTransformationComponent() {
     formantSlider.setValue(1.0);
     formantSlider.setTextValueSuffix("x");
     formantSlider.onValueChange = [this] { updateFormant(); };
-
-    addAndMakeVisible(pitchSlider);
-    addAndMakeVisible(formantSlider);
-}
-
-void VoiceTransformationComponent::paint(juce::Graphics& g) {
-    g.fillAll(juce::Colours::black);
 }
 
 void VoiceTransformationComponent::resized() {
