@@ -1,6 +1,6 @@
 #include "VoiceTransformer.h"
 #include "ParameterManager.h"
-#include <cmath> // For std::isnan
+#include <cmath>
 
 VoiceTransformer::VoiceTransformer() {
     // Initialize parameters
@@ -36,16 +36,22 @@ float VoiceTransformer::applyTransformation(float sample) {
     float formantShift = ParameterManager::getParameter("FormantShift");
 
     // Validate parameter values
-    if (pitchShift < 0.0f || formantShift < 0.0f || formantShift > 2.0f) { // Assuming 2.0f is the threshold
+    if (pitchShift < 0.0f || pitchShift > 2.0f || formantShift < 0.0f || formantShift > 2.0f) {
         return sample; // Return original sample if parameters are invalid
     }
 
-    // Transformation logic here...
-    return sample; // Placeholder for actual transformation logic
+    // Transformation logic here
+    // ...
+
+    return transformedSample; // Placeholder for the transformed sample
 }
 
 void VoiceTransformer::applyVoiceCharacter(int character) {
     // Logic to modify the voice based on the selected character
+    if (character < 1 || character > 3) {
+        return; // Invalid character, do nothing
+    }
+
     switch (character) {
         case 1:
             // Default character processing
@@ -57,7 +63,6 @@ void VoiceTransformer::applyVoiceCharacter(int character) {
             // Character B processing
             break;
         default:
-            // Handle unknown character
             break;
     }
 }

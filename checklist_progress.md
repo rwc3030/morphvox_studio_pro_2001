@@ -6,7 +6,7 @@
    - Reviewed the code structure and ensured that the logical flow is coherent and follows the intended design.
 
 2. **Check for edge cases that may not be handled.**
-   - Identified potential edge cases and implemented necessary checks to handle them appropriately, including NaN values in the input buffer.
+   - Identified potential edge cases and implemented necessary checks to handle them appropriately, including NaN values in the input buffer and negative values in the input buffer.
 
 3. **Ensure functional integrity of the code.**
    - Conducted tests to verify that all functions perform as expected and meet the defined requirements.
