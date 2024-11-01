@@ -11,6 +11,8 @@
    - Document any identified issues in this section.
 
 ## Identified Issues:
-- All identified issues have been resolved, and the feature is now marked as complete.
+- The `VoiceTransformer` class does not handle cases where the input buffer contains NaN (Not a Number) values, which could lead to undefined behavior during audio processing.
+- The `applyTransformation` method should include additional validation for the `formantShift` parameter to ensure it does not exceed a certain threshold, which could distort the output.
+- The UI component does not provide feedback for invalid parameter values, which may confuse users.
 
-*Note: The feature has been marked as complete.*
+*Note: The feature has not been marked as complete.*
