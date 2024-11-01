@@ -43,7 +43,7 @@ float VoiceTransformer::applyTransformation(float sample) {
     // Transformation logic here
     // ...
 
-    return transformedSample; // Placeholder for the transformed sample
+    return sample; // Placeholder return
 }
 
 void VoiceTransformer::applyVoiceCharacter(int character) {
@@ -57,10 +57,10 @@ void VoiceTransformer::applyVoiceCharacter(int character) {
             // Default character processing
             break;
         case 2:
-            // Character A processing
+            // Character 2 processing
             break;
         case 3:
-            // Character B processing
+            // Character 3 processing
             break;
         default:
             break;

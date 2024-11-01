@@ -1,6 +1,6 @@
 #include "VoiceTransformationComponent.h"
+#include "ParameterManager.h"
 
-// Constructor
 VoiceTransformationComponent::VoiceTransformationComponent() {
     // Initialize UI components
     pitchSlider.setRange(0.0, 2.0);
@@ -11,18 +11,23 @@ VoiceTransformationComponent::VoiceTransformationComponent() {
     formantSlider.setRange(0.5, 2.0);
     formantSlider.setValue(1.0);
     formantSlider.setTextValueSuffix("x");
+    formantSlider.onValueChange = [this] { updateFormant(); };
 
-    // New voice character selection
-    voiceCharacterComboBox.addItem("Default", 1);
-    voiceCharacterComboBox.addItem("Character A", 2);
-    voiceCharacterComboBox.addItem("Character B", 3);
+    voiceCharacterComboBox.addItem("Character 1", 1);
+    voiceCharacterComboBox.addItem("Character 2", 2);
+    voiceCharacterComboBox.addItem("Character 3", 3);
     voiceCharacterComboBox.onChange = [this] { updateVoiceCharacter(); };
 }
 
-// Method to update voice character
+void VoiceTransformationComponent::updatePitch() {
+    ParameterManager::setParameter("PitchShift", pitchSlider.getValue());
+}
+
+void VoiceTransformationComponent::updateFormant() {
+    ParameterManager::setParameter("FormantShift", formantSlider.getValue());
+}
+
 void VoiceTransformationComponent::updateVoiceCharacter() {
     int selectedCharacter = voiceCharacterComboBox.getSelectedId();
     ParameterManager::setParameter("VoiceCharacter", selectedCharacter);
 }
-
-// Other methods...
