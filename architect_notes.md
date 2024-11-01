@@ -24,6 +24,16 @@
 3. **Unresolved Bug**: No upper limit check for pitchShift in applyTransformation.
 4. **Unresolved Bug**: No validation for character parameter in applyVoiceCharacter.
 
+## Gaps to Feature Completeness
+
+1. **Input Buffer Validation**: The current implementation lacks comprehensive validation for the input buffer, particularly for values outside the expected audio sample range. Implementing a robust validation mechanism is necessary to ensure that the audio processing functions correctly.
+
+2. **Negative Value Handling**: While there is some handling for negative values, a more thorough approach is needed to ensure that all negative values are appropriately managed throughout the processing pipeline.
+
+3. **Pitch Shift Upper Limit**: The `applyTransformation` function requires an upper limit check for the `pitchShift` parameter to prevent unexpected behavior during audio processing.
+
+4. **Voice Character Validation**: The `applyVoiceCharacter` function needs validation for the character parameter to ensure that only valid character selections are processed.
+
 ## File and Directory Structure Adjustments
 
 - Verified that the directory structure aligns with the requirements specified in 'README.md'.
