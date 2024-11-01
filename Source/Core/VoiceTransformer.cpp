@@ -30,11 +30,11 @@ float VoiceTransformer::applyTransformation(float sample) {
     float formantShift = ParameterManager::getParameter("FormantShift");
 
     // Validate parameter values
-    if (pitchShift < 0.0f || formantShift < 0.0f) {
+    if (pitchShift < 0.0f || formantShift < 0.0f || pitchShift > 2.0f || formantShift > 2.0f) {
         return sample; // Return original sample if parameters are invalid
     }
 
-    // Apply transformation logic here (details omitted for brevity)
+    // Transformation logic here (not shown)
     // ...
 
     return transformedSample; // Return the transformed sample
