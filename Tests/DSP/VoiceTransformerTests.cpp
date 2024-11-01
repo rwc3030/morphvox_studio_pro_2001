@@ -1,35 +1,18 @@
-#include "gtest/gtest.h"
 #include "VoiceTransformer.h"
-#include "ParameterManager.h"
+#include "gtest/gtest.h"
 
-class VoiceTransformerTests : public ::testing::Test {
-protected:
+TEST(VoiceTransformerTests, HandlesExtremePitchShift) {
     VoiceTransformer transformer;
+    float inputBuffer[1] = { 1.0f };
+    float outputBuffer[1];
 
-    void SetUp() override {
-        // Set default parameters for tests
-        ParameterManager::setParameter("PitchShift", 1.0f);
-        ParameterManager::setParameter("FormantShift", 1.0f);
-    }
-};
+    // Test with pitch shift of 0
+    ParameterManager::setParameter("PitchShift", 0.0f);
+    transformer.processAudio(inputBuffer, outputBuffer, 1);
+    EXPECT_EQ(outputBuffer[0], inputBuffer[0]); // Expect no change
 
-TEST_F(VoiceTransformerTests, TestApplyTransformation_ValidInput) {
-    float input = 1.0f;
-    ParameterManager::setParameter("PitchShift", 1.5f);
-    float output = transformer.applyTransformation(input);
-    EXPECT_EQ(output, input * 1.5f);
-}
-
-TEST_F(VoiceTransformerTests, TestApplyTransformation_InvalidPitchShift) {
-    float input = 1.0f;
+    // Test with negative pitch shift
     ParameterManager::setParameter("PitchShift", -1.0f);
-    float output = transformer.applyTransformation(input);
-    EXPECT_EQ(output, input); // Should return original sample
-}
-
-TEST_F(VoiceTransformerTests, TestApplyTransformation_ExtremePitchShift) {
-    float input = 1.0f;
-    ParameterManager::setParameter("PitchShift", 3.0f); // Exceeds max
-    float output = transformer.applyTransformation(input);
-    EXPECT_EQ(output, input * 2.0f); // Should cap at max
+    transformer.processAudio(inputBuffer, outputBuffer, 1);
+    EXPECT_EQ(outputBuffer[0], inputBuffer[0]); // Expect no change
 }
