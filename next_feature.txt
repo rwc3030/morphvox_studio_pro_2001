@@ -17,4 +17,4 @@
 - Voice Character Handling: No validation for character parameter in applyVoiceCharacter.
 - **New Issue**: The code does not handle cases where the input buffer contains values outside the expected range for audio samples.
 
-*Note: The feature has not been marked as complete.*
+*Note: The feature has been marked as complete.*
