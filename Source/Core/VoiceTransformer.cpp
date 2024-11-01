@@ -15,7 +15,9 @@ void VoiceTransformer::processAudio(float* inputBuffer, float* outputBuffer, int
 
     // Process audio with new transformation logic
     for (int i = 0; i < numSamples; ++i) {
-        if (std::isnan(inputBuffer[i])) {
+        if (inputBuffer[i] < 0.0f) {
+            outputBuffer[i] = 0.0f; // Handle negative values
+        } else if (std::isnan(inputBuffer[i])) {
             outputBuffer[i] = 0.0f; // Handle NaN values
         } else {
             outputBuffer[i] = applyTransformation(inputBuffer[i]);
@@ -40,10 +42,8 @@ float VoiceTransformer::applyTransformation(float sample) {
         return sample; // Return original sample if parameters are invalid
     }
 
-    // Transformation logic here
-    // ...
-
-    return sample; // Placeholder return
+    // Transformation logic here...
+    return sample; // Placeholder for actual transformation logic
 }
 
 void VoiceTransformer::applyVoiceCharacter(int character) {
@@ -56,13 +56,6 @@ void VoiceTransformer::applyVoiceCharacter(int character) {
         case 1:
             // Default character processing
             break;
-        case 2:
-            // Character 2 processing
-            break;
-        case 3:
-            // Character 3 processing
-            break;
-        default:
-            break;
+        // Additional cases for other characters...
     }
 }
