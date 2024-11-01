@@ -34,15 +34,16 @@ float VoiceTransformer::applyTransformation(float sample) {
         return sample; // Return original sample if parameters are invalid
     }
 
-    // Additional checks for extreme parameter values
+    // Handle extreme parameter values
     if (pitchShift > 2.0f) {
-        pitchShift = 2.0f; // Cap pitch shift to maximum
-    } else if (pitchShift < -2.0f) {
-        pitchShift = -2.0f; // Cap pitch shift to minimum
+        pitchShift = 2.0f; // Cap pitch shift to maximum value
+    } else if (pitchShift < 0.5f) {
+        pitchShift = 0.5f; // Cap pitch shift to minimum value
     }
 
-    // Transformation logic here (not shown for brevity)
-    return sample; // Placeholder return
+    // Transformation logic (placeholder)
+    // This is where the actual transformation would be applied
+    return sample * pitchShift; // Example transformation
 }
 
 extern "C" void processVoiceTransformation(float* inputBuffer, float* outputBuffer, int numSamples) {

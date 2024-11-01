@@ -7,6 +7,8 @@ This template provides standardized development guidelines for VST plugin projec
 ### New Feature: Voice Transformation
 - Added UI controls for pitch and formant adjustments.
 - Implemented API endpoint for processing voice transformations.
+- Enhanced voice transformation logic with edge case handling.
+- Added unit tests for voice transformation functionality.
 
 ### Standard Development Stack
 #### Required Technologies
@@ -45,6 +47,7 @@ This template provides standardized development guidelines for VST plugin projec
 │   └── /Presets                # Default presets
 ├── /Tests
 │   ├── /DSP                    # DSP unit tests
+│   │   └── VoiceTransformerTests.cpp # Unit tests for voice transformer
 │   ├── /GUI                    # UI component tests
 │   └── /Integration            # Integration tests
 └── /Builds                     # Build configurations
