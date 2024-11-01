@@ -1,7 +1,7 @@
 # Issues to Address
 
-1. Milestone: 
-2. Epic: 
+1. Milestone: Voice Transformation Enhancement
+2. Epic: Voice Processing Improvements
 3. Feature: Feature Completion
 4. User Story: 
 5. Acceptance Criteria:
