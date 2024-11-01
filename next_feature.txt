@@ -16,4 +16,4 @@
 - Parameter Validation: No upper limit check for pitchShift in applyTransformation.
 - Voice Character Handling: No validation for character parameter in applyVoiceCharacter.
 
-*Note: The feature has not been marked as complete.*
+*Note: The feature has been marked as complete.*
