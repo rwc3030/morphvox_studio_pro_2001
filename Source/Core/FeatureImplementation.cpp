@@ -1,8 +1,3 @@
-#include "FeatureImplementation.h"
-#include "ParameterManager.h"
-#include "AudioEngine.h"
-
-// New feature implementation for enhanced voice transformation
 class VoiceTransformer {
 public:
     VoiceTransformer() {
@@ -22,7 +17,6 @@ public:
         }
     }
 
-private:
     void initParameters() {
         // Initialize parameters for voice transformation
         ParameterManager::setParameter("PitchShift", 1.0f);
@@ -33,11 +27,16 @@ private:
         // Apply pitch and formant shifting
         float pitchShift = ParameterManager::getParameter("PitchShift");
         float formantShift = ParameterManager::getParameter("FormantShift");
+
+        // Validate parameter values
+        if (pitchShift < 0.0f || formantShift < 0.0f) {
+            return sample; // Return original sample if parameters are invalid
+        }
+
         return sample * pitchShift; // Simplified transformation for demonstration
     }
 };
 
-// API endpoint for accessing the new feature
 extern "C" void processVoiceTransformation(float* inputBuffer, float* outputBuffer, int numSamples) {
     VoiceTransformer transformer;
     transformer.processAudio(inputBuffer, outputBuffer, numSamples);
