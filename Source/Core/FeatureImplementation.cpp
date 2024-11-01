@@ -9,6 +9,11 @@ public:
     }
 
     void processAudio(float* inputBuffer, float* outputBuffer, int numSamples) {
+        // Check for null pointers and invalid sample count
+        if (inputBuffer == nullptr || outputBuffer == nullptr || numSamples <= 0) {
+            return; // Early exit to avoid processing
+        }
+
         // Use the utility function to process audio
         processAudioBuffer(inputBuffer, outputBuffer, numSamples);
     }
@@ -25,7 +30,7 @@ public:
         float formantShift = ParameterManager::getParameter("FormantShift");
 
         // Validate parameter values
-        if (pitchShift < 0.0f || formantShift < 0.0f) {
+        if (pitchShift < 0.0f || pitchShift > 2.0f || formantShift < 0.0f || formantShift > 2.0f) {
             return sample; // Return original sample if parameters are invalid
         }
 

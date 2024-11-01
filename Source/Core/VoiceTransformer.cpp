@@ -9,6 +9,11 @@ VoiceTransformer::VoiceTransformer() {
 }
 
 void VoiceTransformer::processAudio(float* inputBuffer, float* outputBuffer, int numSamples) {
+    // Check for null pointers and invalid sample count
+    if (inputBuffer == nullptr || outputBuffer == nullptr || numSamples <= 0) {
+        return; // Early exit to avoid processing
+    }
+
     // Use the utility function to process audio
     processAudioBuffer(inputBuffer, outputBuffer, numSamples);
 }
