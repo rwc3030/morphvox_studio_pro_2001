@@ -12,11 +12,12 @@ VoiceTransformationComponent::VoiceTransformationComponent() {
     formantSlider.setValue(1.0);
     formantSlider.setTextValueSuffix("x");
     formantSlider.onValueChange = [this] { updateFormant(); };
-}
 
-void VoiceTransformationComponent::resized() {
-    pitchSlider.setBounds(10, 10, getWidth() - 20, 20);
-    formantSlider.setBounds(10, 40, getWidth() - 20, 20);
+    // New Voice Character Selection
+    voiceCharacterDropdown.addItem("Default", 1);
+    voiceCharacterDropdown.addItem("Character A", 2);
+    voiceCharacterDropdown.addItem("Character B", 3);
+    voiceCharacterDropdown.onChange = [this] { updateVoiceCharacter(); };
 }
 
 void VoiceTransformationComponent::updatePitch() {
@@ -25,4 +26,9 @@ void VoiceTransformationComponent::updatePitch() {
 
 void VoiceTransformationComponent::updateFormant() {
     ParameterManager::setParameter("FormantShift", formantSlider.getValue());
+}
+
+void VoiceTransformationComponent::updateVoiceCharacter() {
+    int selectedCharacter = voiceCharacterDropdown.getSelectedId();
+    ParameterManager::setParameter("VoiceCharacter", selectedCharacter);
 }

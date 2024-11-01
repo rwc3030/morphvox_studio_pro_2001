@@ -22,6 +22,7 @@ void VoiceTransformer::initParameters() {
     // Initialize parameters for voice transformation
     ParameterManager::setParameter("PitchShift", 1.0f);
     ParameterManager::setParameter("FormantShift", 1.0f);
+    ParameterManager::setParameter("VoiceCharacter", 1); // Default character
 }
 
 float VoiceTransformer::applyTransformation(float sample) {
@@ -30,17 +31,28 @@ float VoiceTransformer::applyTransformation(float sample) {
     float formantShift = ParameterManager::getParameter("FormantShift");
 
     // Validate parameter values
-    if (pitchShift < 0.0f || formantShift < 0.0f || pitchShift > 2.0f || formantShift > 2.0f) {
+    if (pitchShift < 0.0f || formantShift < 0.0f) {
         return sample; // Return original sample if parameters are invalid
     }
 
-    // Transformation logic here (not shown)
-    // ...
+    // Apply transformation logic here...
 
-    return transformedSample; // Return the transformed sample
+    return sample; // Placeholder for transformed sample
 }
 
-extern "C" void processVoiceTransformation(float* inputBuffer, float* outputBuffer, int numSamples) {
-    VoiceTransformer transformer;
-    transformer.processAudio(inputBuffer, outputBuffer, numSamples);
+void VoiceTransformer::applyVoiceCharacter(int character) {
+    // Logic to modify the voice based on the selected character
+    switch (character) {
+        case 1:
+            // Default character processing
+            break;
+        case 2:
+            // Character A processing
+            break;
+        case 3:
+            // Character B processing
+            break;
+        default:
+            break;
+    }
 }
