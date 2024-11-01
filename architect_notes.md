@@ -16,3 +16,11 @@
 3. **Voice Character Handling**: The logic for handling voice characters is duplicated in both `VoiceTransformer.cpp` and `VoiceTransformationAPI.cpp`. This should be consolidated to a single method to streamline the codebase.
 
 4. **Error Handling**: The error handling for invalid parameters is repeated across multiple files. A centralized error handling mechanism could improve maintainability.
+
+## Bugs and Functional Issues
+
+1. **Unresolved Bug**: The code does not handle cases where the input buffer contains values outside the expected range for audio samples.
+2. **Unresolved Bug**: No handling for negative values in the input buffer.
+3. **Unresolved Bug**: No upper limit check for pitchShift in applyTransformation.
+4. **Unresolved Bug**: No validation for character parameter in applyVoiceCharacter.
+
